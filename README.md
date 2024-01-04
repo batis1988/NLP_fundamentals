@@ -15,3 +15,5 @@ First of all, it’s required to know how to preprocess raw text data and extrac
     
    Lets look at the “Tweets and User Engagement” dataset, provided by Kaggle ([link](https://www.kaggle.com/datasets/thedevastator/tweets-and-user-engagement/data)).
    In vast majority of cases we will go throw standard NLP routine writing algorithms and constructing from scratch.
+
+### BOW, CBOW and TF-IDF from scratch
