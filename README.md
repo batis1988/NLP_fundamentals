@@ -2,7 +2,7 @@
 ## Essential tools and techniques from scratch
 
 ### 1. Text preprocessing and corpus preparation to faetures extraction
-First of all, it’s required to know how to preprocess raw text data and extract features. Thats why the NLP basics is essential for any DS/DA.
+First of all, it’s required to know how to preprocess raw text data and extract features. You can face the total mess while scraping or assembling data. Thats why the NLP basics is essential for any DS/DA.
 1. How to make raw data be ready for analysis?
     1. Put it onto a list or collection of a single sentences.
     2. Cleansing with `stopwords` and specific characters (and even numerical data) replacement.
