@@ -1,7 +1,5 @@
 numpy
 pandas
-scipy
-matplotlib
-pillow
-opencv-python
-jupyter
+nltk
+re
+string
