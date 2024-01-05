@@ -16,4 +16,5 @@ First of all, it’s required to know how to preprocess raw text data and extrac
    Lets look at the “Tweets and User Engagement” dataset, provided by Kaggle ([link](https://www.kaggle.com/datasets/thedevastator/tweets-and-user-engagement/data)).
    In vast majority of cases we will go throw standard NLP routine writing algorithms and constructing from scratch.
 
-### BOW, CBOW and TF-IDF from scratch
+### 2. Bag of Words from scratch (or CountVectorizer)
+So, here's one of the simpliest way to get numerical features from a preprocessed text. Assumed, it's not more than counting words occurance at douments. It could be obtained with a huge complexity and memory consumption with large corpus, fortunately it can be thresholded by 'max_features' or 'max_size' limitation.
