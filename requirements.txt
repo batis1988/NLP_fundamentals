@@ -3,3 +3,5 @@ pandas
 nltk
 re
 string
+typing
+collections
