@@ -74,7 +74,7 @@ class BagOfWords:
         else:
             return self.max_bow, self.features_names
 
-    def _get_maxfeatures(self, vocab, bow) -> tuple:
+    def _get_maxfeatures(self, bow) -> tuple:
         sorted_args = np.argsort(np.sum(bow > 0, axis=0))[::-1].tolist()[: self.limit]
         max_features = np.take_along_axis(bow,
                                           np.array(sorted_args)[np.newaxis, :],
@@ -105,7 +105,7 @@ class BagOfWords:
         if isinstance(self.limit, float):
             self.limit = int(self.num_features * self.limit)
         elif self.limit is not None:
-            self.max_bow, self.max_features_names = self._get_maxfeatures(self.vocab, self.bow)
+            self.max_bow, self.max_features_names = self._get_maxfeatures(self.bow)
 
         self.is_fitted = True
 
@@ -120,7 +120,7 @@ class BagOfWords:
             for idx, sentence in enumerate(tokens):
                 bow[idx, :] = self._create_bow_vector(sentence)
             if self.limit is not None:
-                max_bow, names = self._get_maxfeatures(self.vocab, bow)
+                max_bow, names = self._get_maxfeatures(bow)
                 return max_bow, names
             if self.limit is None:
                 return bow, self.features_names
