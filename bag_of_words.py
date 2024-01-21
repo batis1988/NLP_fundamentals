@@ -62,19 +62,19 @@ class BagOfWords:
                 pass
         return vector
 
-    def _fill_bow(self, corpus):
+    def _fill_bow(self, corpus) -> None:
         for idx, sentence in enumerate(corpus):
             self.bow[idx, :] = self._create_bow_vector(
                 self._tokenize_sent(sentence)
             )
 
-    def _get_bow(self):
+    def _get_bow(self) -> tuple:
         if self.limit is None:
             return self.bow, self.features_names
         else:
             return self.max_bow, self.features_names
 
-    def _get_maxfeatures(self, vocab, bow):
+    def _get_maxfeatures(self, vocab, bow) -> tuple:
         sorted_args = np.argsort(np.sum(bow > 0, axis=0))[::-1].tolist()[: self.limit]
         max_features = np.take_along_axis(bow,
                                           np.array(sorted_args)[np.newaxis, :],
