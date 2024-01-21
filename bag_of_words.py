@@ -37,6 +37,7 @@ class BagOfWords:
         self.max_features_names: Optional[List[str]] = None
 
         self.is_fitted = False
+
         if isinstance(max_size, float):
             assert max_size <= 1.0, "max_size = {0.0, 1.0} or not bigger than vocab length"
             self.limit = max_size
@@ -121,7 +122,7 @@ class BagOfWords:
             if self.limit is not None:
                 max_bow, names = self._get_maxfeatures(self.vocab, bow)
                 return max_bow, names
-            if self.limit == None:
+            if self.limit is None:
                 return bow, self.features_names
         else:
             raise AttributeError("Not Fitted yet")
