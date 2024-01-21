@@ -127,5 +127,6 @@ class BagOfWords:
             raise AttributeError("Not Fitted yet")
 
 
-bow = BagOfWords(max_size=50)
-features, names = bow.fit_transform(text.clean_corpus)
+if __name__ == '__main__':
+    bow = BagOfWords(max_size=50)
+    features, names = bow.fit_transform(text.clean_corpus)
