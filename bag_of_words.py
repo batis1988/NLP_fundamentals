@@ -8,7 +8,7 @@ Created on Fri Jan  5 16:21:58 2024
 
 import numpy as np
 import pandas as pd
-from typing import Union, List
+from typing import Union, List, Optional
 from collections import defaultdict
 import nltk
 from nltk.tokenize import word_tokenize
@@ -27,6 +27,15 @@ text = TextPreprocesser(raw_corpus=corpus, stopwords=stopwords)
 
 class BagOfWords:
     def __init__(self, max_size: Union[float, int, None] = None):
+        self.num_objects: Optional[int] = None
+        self.num_features: Optional[int] = None
+        self.bow: Optional[np.ndarray] = None
+        self.num_objects: Optional[int] = None
+        self.vocab: Optional[dict] = None
+        self.features_names: Optional[List[str]] = None
+        self.max_bow: Optional[np.ndarray] = None
+        self.max_features_names: Optional[List[str]] = None
+
         self.is_fitted = False
         if isinstance(max_size, float):
             assert max_size <= 1.0, "max_size = {0.0, 1.0} or not bigger than vocab length"
@@ -91,11 +100,12 @@ class BagOfWords:
         self.bow = np.zeros((self.num_objects, self.num_features))
         self._fill_bow(corpus)
         self.features_names = list(self.vocab.keys())
+
         if isinstance(self.limit, float):
             self.limit = int(self.num_features * self.limit)
         elif self.limit is not None:
-            self.max_bow, self.max_features_names = self._get_maxfeatures(self.vocab,
-                                                                          self.bow)
+            self.max_bow, self.max_features_names = self._get_maxfeatures(self.vocab, self.bow)
+
         self.is_fitted = True
 
     def fit_transform(self, corpus, vocab=None):
